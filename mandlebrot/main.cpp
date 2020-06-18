@@ -69,19 +69,23 @@ class MandleBrot2
          m_dPosX(0),
          m_dPosY(0),
          m_dZoom(0),
-         m_dScaleX(0),
-         m_dScaleY(0)
+         m_dScale(0)
     {
         setView(2.0, 1.5, 0.2);
     }
     
     void setView(double _dX, double _dY, double _dZoom)
     {
-        m_dPosX = _dX;
-        m_dPosY = _dY;
         m_dZoom = _dZoom;
-        m_dScaleX = 1.0 / m_iWidth / m_dZoom;
-        m_dScaleY = 1.0 / m_iHeight / m_dZoom;
+        if (m_iWidth < m_iHeight) {
+            m_dScale = 1.0 / m_iWidth / m_dZoom;
+        }
+        else {
+            m_dScale = 1.0 / m_iHeight / m_dZoom;
+        }
+        
+        m_dPosX = _dX - m_dScale*m_iWidth*0.5;
+        m_dPosY = _dY - m_dScale*m_iHeight*0.5;
         m_iMaxIterations = 200;
     }
         
@@ -96,9 +100,9 @@ class MandleBrot2
             {
                 int color = value(x, y);
                 
-                pImage[ipx++] = color;
-                pImage[ipx++] = color << 1;
-                pImage[ipx++] = color << 2;
+                pImage[ipx++] = color << 4;
+                pImage[ipx++] = color << 5;
+                pImage[ipx++] = color << 6;
             }
         }
         
@@ -118,8 +122,8 @@ class MandleBrot2
  private:
      int value(int _iX, int _iY)
      {
-         double fCx = (double)_iX * m_dScaleX + m_dPosX;
-         double fCy = (double)_iY * m_dScaleY + m_dPosY;
+         double fCx = (double)_iX * m_dScale + m_dPosX;
+         double fCy = (double)_iY * m_dScale + m_dPosY;
          double fZx = 0;
          double fZy = 0;
          unsigned int nb_iter = 0;
@@ -134,7 +138,7 @@ class MandleBrot2
              fZx = fZxx - fZyy + fCx;
              
              if ((fZxx + fZyy) >= 4) {
-                 return nb_iter << 4;
+                 return nb_iter;
              }
              
              nb_iter++;
@@ -151,24 +155,46 @@ class MandleBrot2
     double                      m_dPosX;
     double                      m_dPosY;
     double                      m_dZoom;
-    double                      m_dScaleX;
-    double                      m_dScaleY;
+    double                      m_dScale;
 };
 
 
 int main(int argc, const char * argv[])
 {
-    int width = 4000;
-    int height = 4000;
+    int width = 3000;
+    int height = 2000;
 
     // profile implementation speed
     MandleBrot1::profile("test1.jpeg", width, height);
     
     auto mb2 = MandleBrot2(width, height);
-    mb2.setView(-1.5, -1.0, 0.4);
+    mb2.setView(-0.5, 0, 0.4);
     mb2.profile("test2.jpeg");
     
+    
     // play with zoom
+    /*
+    for (double i = 10; ; i *= 1.2) {
+        mb2.setView(-0.743643887037151,
+                    0.131825904205330,
+                    i);
+        mb2.profile("test3.jpeg");
+        
+        printf("zoom=%.2f\n", (float)i);
+    }
+    */
+    
+    // high res render
+    /*
+    width = 10000;
+    height = 10000;
+    
+    auto mb3 = MandleBrot2(width, height);
+    mb3.setView(-0.743643887037151,
+                0.131825904205330,
+                3028870234112);
+    mb3.profile("test_hd.jpeg");
+    */
     
     return 0;
 }
