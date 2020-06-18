@@ -42,7 +42,7 @@
 		9AC95E64249A0696004B84A4 = {
 			isa = PBXGroup;
 			children = (
-				9AC95E6F249A0696004B84A4 /* madlebrot */,
+				9AC95E6F249A0696004B84A4 /* mandlebrot */,
 				9AC95E6E249A0696004B84A4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,13 +55,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9AC95E6F249A0696004B84A4 /* madlebrot */ = {
+		9AC95E6F249A0696004B84A4 /* mandlebrot */ = {
 			isa = PBXGroup;
 			children = (
 				9AC95E70249A0696004B84A4 /* main.cpp */,
 				9AC95E77249A0E3C004B84A4 /* jpeg.h */,
 			);
-			path = madlebrot;
+			path = mandlebrot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9AC95E68249A0696004B84A4 /* Build configuration list for PBXProject "madlebrot" */;
+			buildConfigurationList = 9AC95E68249A0696004B84A4 /* Build configuration list for PBXProject "mandlebrot" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -264,7 +264,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9AC95E68249A0696004B84A4 /* Build configuration list for PBXProject "madlebrot" */ = {
+		9AC95E68249A0696004B84A4 /* Build configuration list for PBXProject "mandlebrot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AC95E72249A0696004B84A4 /* Debug */,

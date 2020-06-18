@@ -36,7 +36,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/arno.duvenhage/wok/madlebrot"
+      customWorkingDirectory = "/Users/arno.duvenhage/wok/mandlebrot"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -48,9 +48,18 @@
             BlueprintIdentifier = "9AC95E6C249A0696004B84A4"
             BuildableName = "madlebrot"
             BlueprintName = "madlebrot"
-            ReferencedContainer = "container:madlebrot.xcodeproj">
+            ReferencedContainer = "container:mandlebrot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9AC95E6C249A0696004B84A4"
+            BuildableName = "madlebrot"
+            BlueprintName = "madlebrot"
+            ReferencedContainer = "container:madlebrot.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

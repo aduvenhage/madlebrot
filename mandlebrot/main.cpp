@@ -33,7 +33,7 @@ struct MandleBrot1
         {
             for (int x = 0; x < _iWidth; x++)
             {
-                int color = value(x, y, _iWidth, _iHeight, 100);
+                int color = value(x, y, _iWidth, _iHeight, 200);
                 int ipx = (y * _iWidth + x) * 3;
                 
                 image_buffer[ipx] = color;
